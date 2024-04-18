@@ -1,9 +1,10 @@
-from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, filters, Application, ContextTypes
+import random
+
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-import random
+from telegram import Update, ReplyKeyboardMarkup
+from telegram.ext import CommandHandler, CallbackContext, MessageHandler, filters, Application, ContextTypes
 
 API_KEY = "6856319063:AAHGvZWAiX977g_qEVGCOyMxXjmTEJayePk"
 API_BASE_URL = "https://api.tinkoff.ru/invest/some_endpoint"
@@ -275,12 +276,12 @@ async def get_bitcoin_1h_change(update: Update, context: ContextTypes.DEFAULT_TY
 
 async def get_ethereum_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ethereum_1h_percent_change = get_1h_percent_change('ETH')
-    await update.message.reply_text("1-часовое изменение цены Эфириума: " + str(ethereum_1h_percent_change))
+    await update.message.reply_text("1-часовое изменение цены Ethereum: " + str(ethereum_1h_percent_change))
 
 
 async def get_tether_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tether_1h_percent_change = get_1h_percent_change('USDT')
-    await update.message.reply_text("1-часовое изменение цены Тезера: " + str(tether_1h_percent_change))
+    await update.message.reply_text("1-часовое изменение цены Tether: " + str(tether_1h_percent_change))
 
 
 async def get_bnb_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -290,7 +291,7 @@ async def get_bnb_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def get_solana_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     sol_1h_percent_change = get_1h_percent_change('SOL')
-    await update.message.reply_text("1-часовое изменение цены Соланы: " + str(sol_1h_percent_change))
+    await update.message.reply_text("1-часовое изменение цены Solana: " + str(sol_1h_percent_change))
 
 
 async def get_usdc_1h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -349,12 +350,12 @@ async def get_bitcoin_24h_change(update: Update, context: ContextTypes.DEFAULT_T
 
 async def get_ethereum_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ethereum_24h_percent_change = get_24h_percent_change('ETH')
-    await update.message.reply_text("24-часовое изменение цены Эфириума: " + str(ethereum_24h_percent_change))
+    await update.message.reply_text("24-часовое изменение цены Ethereum: " + str(ethereum_24h_percent_change))
 
 
 async def get_tether_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tether_24h_percent_change = get_24h_percent_change('USDT')
-    await update.message.reply_text("24-часовое изменение цены Тезера: " + str(tether_24h_percent_change))
+    await update.message.reply_text("24-часовое изменение цены Tether: " + str(tether_24h_percent_change))
 
 
 async def get_bnb_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -364,7 +365,7 @@ async def get_bnb_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def get_solana_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     sol_24h_percent_change = get_24h_percent_change('SOL')
-    await update.message.reply_text("24-часовое изменение цены Соланы: " + str(sol_24h_percent_change))
+    await update.message.reply_text("24-часовое изменение цены Solana: " + str(sol_24h_percent_change))
 
 
 async def get_usdc_24h_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -416,54 +417,55 @@ def get_7d_percent_change(symbol, api_key='0f3fc9c2-0644-4f21-b821-af5ad27f8cf9'
     except Exception as e:
         return f"Произошла ошибка: {str(e)}"
 
+
 async def get_bitcoin_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bitcoin_7d_percent_change = get_7d_percent_change('BTC')
-    await update.message.reply_text("24-часовое изменение цены Bitcoin: " + str(bitcoin_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Bitcoin: " + str(bitcoin_7d_percent_change))
 
 
 async def get_ethereum_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ethereum_7d_percent_change = get_7d_percent_change('ETH')
-    await update.message.reply_text("24-часовое изменение цены Эфириума: " + str(ethereum_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Ethereum: " + str(ethereum_7d_percent_change))
 
 
 async def get_tether_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tether_7d_percent_change = get_7d_percent_change('USDT')
-    await update.message.reply_text("24-часовое изменение цены Тезера: " + str(tether_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Tether: " + str(tether_7d_percent_change))
 
 
 async def get_bnb_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bnb_7d_percent_change = get_7d_percent_change('BNB')
-    await update.message.reply_text("24-часовое изменение цены BNB: " + str(bnb_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены BNB: " + str(bnb_7d_percent_change))
 
 
 async def get_solana_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     sol_7d_percent_change = get_7d_percent_change('SOL')
-    await update.message.reply_text("24-часовое изменение цены Соланы: " + str(sol_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Solana: " + str(sol_7d_percent_change))
 
 
 async def get_usdc_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     usdc_7d_percent_change = get_7d_percent_change('USDC')
-    await update.message.reply_text("24-часовое изменение цены USDC: " + str(usdc_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены USDC: " + str(usdc_7d_percent_change))
 
 
 async def get_xrp_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     xrp_7d_percent_change = get_7d_percent_change('XRP')
-    await update.message.reply_text("24-часовое изменение цены XRP: " + str(xrp_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены XRP: " + str(xrp_7d_percent_change))
 
 
 async def get_dogecoin_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     doge_7d_percent_change = get_7d_percent_change('DOGE')
-    await update.message.reply_text("24-часовое изменение цены Dogecoin: " + str(doge_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Dogecoin: " + str(doge_7d_percent_change))
 
 
 async def get_toncoin_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ton_7d_percent_change = get_7d_percent_change('TON')
-    await update.message.reply_text("24-часовое изменение цены Toncoin: " + str(ton_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Toncoin: " + str(ton_7d_percent_change))
 
 
 async def get_cardano_7d_change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     cardano_7d_percent_change = get_7d_percent_change('ADA')
-    await update.message.reply_text("24-часовое изменение цены Cardano: " + str(cardano_7d_percent_change))
+    await update.message.reply_text("7-дневное изменение цены Cardano: " + str(cardano_7d_percent_change))
 
 
 # -------------------------------------------Паттерны свечей тут-------------------------------------------------------
@@ -683,7 +685,7 @@ async def upload_license(update: Update, context: CallbackContext):
 
 # --------------------------------------------------Тут основа, база---------------------------------------------------
 def main(show_crypto_price=None, show_top_cryptocurrencies=None) -> None:
-    application = Application.builder().token(API_KEY).build()
+    application = Application.builder().token(API_KEY).read_timeout(30).write_timeout(30).build()
     # ----------------------------------------------Системные функции--------------------------------------------------
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("actionspanel", actionspanel))
