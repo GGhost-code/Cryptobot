@@ -678,7 +678,7 @@ async def cardanochangepanel(update: Update, context: CallbackContext):
 
 
 async def upload_license(update: Update, context: CallbackContext):
-    await update.message.reply_document("LICENSE")
+    await update.message.reply_document("LICENSE.txt")
 
 
 # --------------------------------------------------Тут основа, база---------------------------------------------------
