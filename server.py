@@ -7,7 +7,6 @@ from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackContext, MessageHandler, filters, Application, ContextTypes
 
 API_KEY = "6856319063:AAHGvZWAiX977g_qEVGCOyMxXjmTEJayePk"
-API_BASE_URL = "https://api.tinkoff.ru/invest/some_endpoint"
 
 
 # -------------------------------------------------Узнаем цену криптовалют---------------------------------------------
