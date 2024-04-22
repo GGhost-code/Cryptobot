@@ -318,7 +318,7 @@ async def get_cardano_1h_change(update: Update, context: ContextTypes.DEFAULT_TY
     await update.message.reply_text("1-часовое изменение цены Cardano: " + str(cardano_1h_percent_change))
 
 
-# ------------------------------------------------2 часа---------------------------------------------------------------
+# ------------------------------------------------24 часа---------------------------------------------------------------
 def get_24h_percent_change(symbol, api_key='0f3fc9c2-0644-4f21-b821-af5ad27f8cf9'):
     url = f"https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol={symbol}"
     headers = {
