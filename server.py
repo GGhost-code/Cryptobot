@@ -682,7 +682,7 @@ async def upload_license(update: Update, context: CallbackContext):
     await update.message.reply_document("LICENSE.txt")
 
 
-# --------------------------------------------------Тут основа, база---------------------------------------------------
+# --------------------------------------------------Тут основа, так сказать база---------------------------------------
 def main(show_crypto_price=None, show_top_cryptocurrencies=None) -> None:
     application = Application.builder().token(API_KEY).read_timeout(30).write_timeout(30).build()
     # ----------------------------------------------Системные функции--------------------------------------------------
